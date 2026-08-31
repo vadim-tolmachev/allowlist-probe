@@ -13,6 +13,13 @@ This repository exists because almost every published claim about which endpoint
 that corridor is either untested or wrong, including several of my own earlier ones. The
 funnel below is the short version of why.
 
+**Start with [GROUND-TRUTH.md](GROUND-TRUTH.md) if you only read one thing.** It takes the
+opposite approach to the funnel below: rather than testing candidates from public lists,
+it decodes paid subscriptions from commercial services that already work under the regime
+and reads off which networks their entry points sit in. It contains the strongest result
+here, which is that permission is granted per prefix and not per network, observed as one
+ASN passing on one block and failing on another in the same measurement.
+
 ## The funnel
 
 | Stage | Survived | What it means |
@@ -189,6 +196,7 @@ fact.
 ## Repository layout
 
 ```
+GROUND-TRUTH.md   what nine commercial operators converged on, and why lists are wrong
 harness/    the five pipeline stages, as run
 data/       per-stage artifacts, redacted as described above
 docs/       provenance of every number in this README
