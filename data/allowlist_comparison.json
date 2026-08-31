@@ -1,0 +1,8 @@
+{
+ "community_source": "jsxta/whitelist-russia cidrwhitelist.txt",
+ "community_cidr_lines": 2114,
+ "community_unique_24": 1772,
+ "scan_24": 13691,
+ "confirmed_by_scan": 912,
+ "in_scan_absent_from_community": 12779
+}
