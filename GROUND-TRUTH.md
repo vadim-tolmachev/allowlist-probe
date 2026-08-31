@@ -109,6 +109,65 @@ because the result is not dependable enough to attach its name to. That is a mar
 worth recording: the segment that can most afford the infrastructure has decided the
 problem is not reliably solvable with it.
 
+## Finding 5: the allowlist regime inspects less than the blacklist regime does
+
+Under Russia's ordinary filtering posture, the middlebox applies behavioural analysis to
+TLS. The reverse-engineered model that circumvention developers currently build against
+(Osetrov, June 2026) describes a conjunction: a suspicious subnet **and** a suspicious
+ClientHello fingerprint **and** more than three parallel TLS attempts to the same SNI
+within sixty seconds, producing a silent 120-second freeze. That model is not ours and is
+cited as context, not as a result. What matters here is what it implies: under the
+blacklist posture, an ordinary TLS tunnel to a foreign server is expected to be probed and
+profiled, which is the reason Reality exists at all. Reality's distinguishing property is
+that it answers an active probe with a real third-party website.
+
+Under allowlist mode, one commercial service **removed that property on purpose** and its
+results improved.
+
+Its earlier configuration was VLESS over Reality with a spoofed permitted SNI
+(`ads.x5.ru`, an address belonging to a retail chain) while connecting to its own entry
+point on Selectel. Its current configuration, read out of the client profile and confirmed
+against the network, is plain TLS with a genuine Let's Encrypt certificate on its own
+domain: the SNI resolves to the address being connected to, the certificate's SAN covers
+that name, ALPN is h2, and the transport is XHTTP over a single address and port with
+different usage profiles multiplexed by request path. Its active-probe resistance is
+strictly worse than before — probing the document root returns a decryption failure rather
+than a decoy site — and it passes on two operators.
+
+The entry point did not move. It is the same `/24` on the same ASN that had failed for the
+same service under the Reality configuration.
+
+Two explanations are not yet separated:
+
+- **(A) the method decides.** The operator inspects consistency between SNI, resolved
+  address and certificate even inside a permitted prefix, and the spoofing was itself the
+  detectable anomaly.
+- **(B) the prefix decides.** The permitted set expanded to cover that block between the
+  two observations. A neighbouring block was independently recorded as permitted in the
+  interval, so this is live.
+
+**A separating test exists, is cheap, and has not been run.** The same service still
+operates one node on a *foreign* address using Reality with the same spoofed permitted
+SNI. If that node also passes under allowlist mode, permission is about the address and
+spoofing is harmless — (B). If it fails while the plain-TLS nodes pass, consistency is
+being enforced — (A). This is one afternoon on a live SIM and it is stated here in advance
+of the result.
+
+This bears directly on the Iranian case, where a randomly generated SNI passes on a
+permitted prefix. If (A) holds, the two regimes differ in exactly that dimension, and a
+technique validated in one is wrong in the other.
+
+**And our own August handset run points the other way.** All four endpoints that passed
+were Reality with a spoofed permitted SNI on a permitted prefix — consistency was plainly
+not enforced on that operator, in that region, on that date. Both observations stand.
+
+The practical conclusion is not about which transport wins. It is that the *set of things
+being checked* is not a constant across operators or across months. The most expensive
+component of a modern circumvention stack — resistance to active probing — is unnecessary
+under one regime, possibly counterproductive under one operator, and load-bearing under
+another. A single published recommendation cannot be correct everywhere, which is an
+argument for continuous measurement rather than for any particular design.
+
 ## Method
 
 Subscriptions are distributed as encrypted links and gated against scraping. Decoding them

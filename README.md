@@ -18,7 +18,11 @@ opposite approach to the funnel below: rather than testing candidates from publi
 it decodes paid subscriptions from commercial services that already work under the regime
 and reads off which networks their entry points sit in. It contains the strongest result
 here, which is that permission is granted per prefix and not per network, observed as one
-ASN passing on one block and failing on another in the same measurement.
+ASN passing on one block and failing on another in the same measurement. It also contains
+the most counterintuitive one: under this regime a commercial service removed Reality and
+SNI spoofing in favour of an honest certificate on its own domain, weakening its
+resistance to active probing, and started passing on an operator that had been rejecting
+it from the same prefix.
 
 ## The funnel
 
@@ -150,6 +154,11 @@ Recorded because they cost time and are not written down anywhere else.
   sample listed 1,046 servers, of which 25 were alive.
 - **Observation point does not bias the remote stage.** The same candidate set probed
   through a Russian relay and a Dutch host returned 326 versus 327 open ports.
+- **A service's own location labels are not evidence of location.** In one commercial
+  subscription every endpoint flagged as European was the same Russian address as its
+  domestic neighbour on a different port; in another, endpoints advertised as Mexican,
+  French, Canadian and Polish resolved into a single Russian hosting provider. Anyone
+  deriving a geographic distribution from scraped subscriptions is measuring marketing.
 
 ## Limitations
 
