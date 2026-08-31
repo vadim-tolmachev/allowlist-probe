@@ -21,6 +21,7 @@ recomputable from this repository with the one-liners shown.
 | 912 confirmed | same | intersection with the scan |
 | 12,779 absent from the list | same | scan minus community list |
 | 270 broken by `allowInsecure` removal | upstream run log | count of configurations that failed after Xray 26.3.27 |
+| 169 of 314 still TCP-open after 9 days | `data/decay_reprobe.json` | re-probe 31 Aug 2026 of the endpoints that carried traffic on 22 Aug |
 | 326 vs 327 open ports | upstream run log | same candidate set probed via a Russian relay and a Dutch host |
 
 ## The handset rows have no machine-readable artifact

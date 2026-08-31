@@ -28,6 +28,18 @@ datacentre-side success overstates handset-side success by roughly another facto
 (314 → 38 → 4). Any tool, list or guide validated by port checks is describing something
 other than what a subscriber experiences.
 
+**The corpus is a snapshot, and it rots fast.** Every figure above is from the run of
+**22 August 2026**. The candidate corpus was scraped from public subscription lists, and
+those lists are mostly stale on the day they are published. Re-probing on **31 August
+2026**, nine days later: of the 314 endpoints that carried traffic, **169 still accept a
+TCP connection, 46% are gone**. TCP acceptance is itself a sixfold overestimate of working
+(2,044 → 314 above), so the number still carrying traffic today is far smaller.
+
+This is not a caveat, it is the result that matters most for anyone building on data like
+this. A published list of endpoints has a half-life measured in days, and a measurement
+run once is describing a network that no longer exists. The same applies to the prefix
+allowlist: see endpoint 29 below.
+
 **Control group.** 200 configurations drawn without allowlist pre-selection were run
 through the same pipeline: 4 carried traffic (2.0%), against 314 of 6,176 (5.1%) for the
 pre-selected corpus. Pre-selection roughly doubles the yield at that stage. The control
@@ -166,7 +178,7 @@ fact.
   is a different act from the original posting. The `uri` field, containing user UUIDs, and
   the Reality public key and short ID have been removed from every record. What remains
   reproduces every number in this README and does not hand anyone a working tunnel.
-- **My own infrastructure is excluded.** 30 endpoints belonging to a service I operate were
+- **My own infrastructure is excluded.** 30 endpoints belonging to infrastructure I control were
   removed from stage 1 before publication, which is why the published artifact holds 6,146
   records rather than 6,176. None of them survived past stage 1, so no downstream figure
   changes.
@@ -200,10 +212,10 @@ python3 harness/xraygen.py    # survivors      -> client profile for handset tes
 
 ## Author
 
-Vadim Tolmachev. I operate a small paid circumvention service inside Russia; these
-measurements are a by-product of keeping it working, and its users are not part of them.
-Corrections are welcome, particularly to the handset results, which are the weakest part
-of this work and the part most worth attacking.
+Vadim Tolmachev, independent researcher in Russia. This work comes out of operational
+experience with circumvention transports under the regime it describes, which is why the
+handset stage exists at all. Corrections are welcome, particularly to the handset results:
+they are the weakest part of this work and the part most worth attacking.
 
 ## License
 
