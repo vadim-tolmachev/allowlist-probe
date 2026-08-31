@@ -24,7 +24,13 @@ SNI spoofing in favour of an honest certificate on its own domain, weakening its
 resistance to active probing, and started passing on an operator that had been rejecting
 it from the same prefix.
 
-## The funnel
+## The funnel: how 6,176 candidates became 38 worth testing
+
+**This table is candidate selection, not a result.** The corpus was scraped from free
+public subscriptions, and such corpora are mostly dead on arrival: entries are withdrawn,
+overloaded, attacked or simply abandoned. Separating "this endpoint is broken" from "the
+regime blocked this endpoint" is the entire methodological problem, and it is solved in
+the next section, not in this one.
 
 | Stage | Survived | What it means |
 |---|---|---|
@@ -32,12 +38,10 @@ it from the same prefix.
 | TCP port open | 2,044 | reachable from a server |
 | Carries traffic (HTTP 200 through the tunnel) | 314 | a working proxy, measured from a datacentre |
 | Stable 3 of 3 on re-measurement | 38 | not a one-off success |
-| **Passes on a live SIM in an allowlist region** | **4** | the only number that describes the regime |
 
-A TCP handshake overstates working endpoints by a factor of about six (2,044 → 314). A
-datacentre-side success overstates handset-side success by roughly another factor of eight
-(314 → 38 → 4). Any tool, list or guide validated by port checks is describing something
-other than what a subscriber experiences.
+A TCP handshake overstates working endpoints by a factor of about six (2,044 → 314). Any
+tool, list or guide validated by port checks is describing something other than what a
+subscriber experiences. The 38 survivors are the input to the handset test below.
 
 **The corpus is a snapshot, and it rots fast.** Every figure above is from the run of
 **22 August 2026**. The candidate corpus was scraped from public subscription lists, and
@@ -59,11 +63,24 @@ gap, not an omission: see [Limitations](#limitations).
 
 ## The handset test (22 August 2026)
 
-This is the part that cannot be done remotely, and it is also the smallest sample here.
+This is the part that cannot be done remotely, it is the smallest sample here, and it is
+the only measurement in this repository that describes the regime rather than the corpus.
 
-38 candidates were loaded into one client profile and run twice: first over unrestricted
-wi-fi, then over a SIM in a region with allowlist mode active. **28 of 38 responded on
-wi-fi. 4 passed on the SIM.**
+**The design is paired, and the pairing is the whole argument.** The same 38
+configurations, in the same client profile, on the same handset, in one sitting, were run
+twice: once over unrestricted wi-fi, then over a SIM in a region with allowlist mode
+active. **28 of 38 answered over wi-fi. 4 of those 28 passed over the SIM.**
+
+The wi-fi leg is the control, and it is what makes the number mean anything. An endpoint
+that is dead, overloaded, withdrawn by its operator or under attack fails over wi-fi too,
+and is therefore already excluded before the SIM leg runs. What reaches the SIM leg is 28
+endpoints demonstrably carrying traffic minutes earlier, over the same device and the same
+client. Of those, the regime admitted four. The ten that failed on wi-fi are counted as
+broken, not as blocked.
+
+This is also the answer to the obvious objection that free public endpoints die for a
+hundred reasons that have nothing to do with censorship. They do, and the control removes
+them from the denominator.
 
 | # | Transport | Permitted SNI / Host | Latency on SIM |
 |---|---|---|---|

@@ -51,10 +51,19 @@ None of them survived to stage 2, so no downstream count changes.
 | `stage2_tcp_open.json` | 2,044 | TCP port open |
 | `stage3_traffic.json` | 2,044 | probed with a real proxy client; 314 have `ok == true` |
 | `stage4_stable.json` | 56 | re-measured; 38 have `hits == 3` |
-| `stage5_sim_candidates.json` | 60 | automated Reality run; 4 have `ok == true` |
+| `stage5_reality_rerun.json` | 60 | automated Reality re-run from the datacentre; 4 have `ok == true` |
 | `control.json` | 200 | control group without allowlist pre-selection; 4 have `ok == true` |
 | `twl_scan_subnets.json` | 13,691 | permitted /24 blocks with unique responsive-host counts |
 | `allowlist_comparison.json` | — | community list versus scan |
+
+**`stage5_reality_rerun.json` is not the handset test.** It was previously named
+`stage5_sim_candidates.json`, which was misleading and is corrected here. It is an
+automated re-run of the surviving Reality configurations from a datacentre host, used to
+narrow the profile that was later loaded onto a handset. It happens to contain four
+successes, and they are **not** the four in the README's handset table: different
+addresses, latencies of 523–866 ms rather than 59–128 ms, and one of them on an SNI that
+is not a permitted Russian domain at all. The coincidence of the number is a coincidence.
+The handset rows have no machine-readable artifact; see `docs/numbers.md`.
 
 `twl_scan_subnets.json` is derived from `openlibrecommunity/twl`, snapshot of
 10 July 2026, and is included so the comparison is reproducible without re-downloading a
