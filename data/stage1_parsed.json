@@ -4882,7 +4882,7 @@
   "sec": "tls",
   "sni": "spiderpanel-production-44f6.up.railway.app",
   "hostheader": "spiderpanel-production-44f6.up.railway.app",
-  "path": "/ws/794d546b-1938-482e-a337-fee751909ab4",
+  "path": "/ws/<redacted-uuid>",
   "flow": "",
   "tag": "🇺🇸 United States, Reston | [BL]",
   "src": "aviamasters_verified"
@@ -70584,7 +70584,7 @@
   "sec": "reality",
   "sni": "www.tradingview.com",
   "hostheader": "www.tradingview.com",
-  "path": "/630fdd2a-0f82-4a85-9ecf-7f490b9e8c24",
+  "path": "/<redacted-uuid>",
   "flow": "",
   "tag": "AetrisVPN",
   "src": "val41k_wl"
@@ -70805,7 +70805,7 @@
   "sec": "reality",
   "sni": "www.tradingview.com",
   "hostheader": "",
-  "path": "/630fdd2a-0f82-4a85-9ecf-7f490b9e8c24",
+  "path": "/<redacted-uuid>",
   "flow": "",
   "tag": "AetrisVPN",
   "src": "val41k_wl"

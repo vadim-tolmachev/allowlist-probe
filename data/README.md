@@ -9,7 +9,9 @@ Removed from every record before publication:
 - `uri` — the full subscription URI, which carries the user UUID and therefore the
   credential itself;
 - `pbk` — Reality public key;
-- `exit_ip` — the egress address observed by the probe target.
+- `exit_ip` — the egress address observed by the probe target;
+- any UUID appearing inside a `path`, replaced by `<redacted-uuid>`: for some WebSocket
+  endpoints the path itself is the credential.
 
 The corpus came from publicly posted subscriptions, but republishing thousands of working
 configurations in aggregated, indexed form is a different act from the original posting.
